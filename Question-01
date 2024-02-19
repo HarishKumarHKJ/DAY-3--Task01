@@ -1,0 +1,85 @@
+Question 1:
+
+   1.For The Given JSON Iterate Over All For Loops(for, for in, for of, for each)
+
+ANS:
+
+a) FOR LOOP
+
+ var json = [ {        
+                "id": "1",        
+                "msg": "hi",        
+                "tid": "2013-05-05",         
+                "fromWho": "[email protected]"
+},   
+{          
+                "id": "2",        
+                "msg": "there",        
+                "tid": "2013-05-05",        
+                "fromWho": "[email protected]"    
+}];
+ for (var i = 0; i < json.length; i++) {
+     console.log(json[i].id);
+     console.log(json[i].msg);
+     console.log(json[i].tid);
+     console.log(json[i].fromWho);
+ }
+
+
+b) FOR IN
+
+var obj = {
+    "id": "1",
+    "msg": "hi",
+    "tid": "2013-05-05",
+    "fromWho": "[email protected]"
+};
+for (var prop in obj) {
+    console.log(prop + ": " + obj[prop]);
+}
+
+
+c) FOR OF
+
+
+ var json = [ {        
+                "id": "1",        
+                "msg": "hi",        
+                "tid": "2013-05-05",         
+                "fromWho": "[email protected]"
+},   
+{          
+                "id": "2",        
+                "msg": "there",        
+                "tid": "2013-05-05",        
+                "fromWho": "[email protected]"    
+}];
+   for (let item of json) {
+      console.log(item.id);
+      console.log(item.msg); 
+      console.log(item.tid);
+      console.log(item.fromWho);
+}
+
+
+d) FOR EACH
+  
+
+  var json = [ {        
+                "id": "1",        
+                "msg": "hi",        
+                "tid": "2013-05-05",         
+                "fromWho": "[email protected]"
+},   
+{          
+                "id": "2",        
+                "msg": "there",        
+                "tid": "2013-05-05",        
+                "fromWho": "[email protected]"    
+}];
+json.forEach(function(item) {
+        console.log(item.id);
+        console.log(item.msg);
+        console.log(item.tid);
+        console.log(item.fromWho);
+});
