@@ -1,85 +1,51 @@
-Question 1:
+1.HOW TO COMPARE TWO JSON HAVE THE SAME PROPERTIES WITHOUT ORDER.
 
-   1.For The Given JSON Iterate Over All For Loops(for, for in, for of, for each)
+                function compareJSON(json1, json2) {
+                       const keys1 = Object.keys(json1);
+                       const keys2 = Object.keys(json2);
 
-ANS:
+                     if (keys1.length !== keys2.length) {
+                             return false;
+                }
 
-a) FOR LOOP
+                  for (const key of keys1) {
+                     if (!keys2.includes(key) || json1[key] !== json2[key]) {
+                          return false;
+               }
+            }
 
- var json = [ {        
-                "id": "1",        
-                "msg": "hi",        
-                "tid": "2013-05-05",         
-                "fromWho": "[email protected]"
-},   
-{          
-                "id": "2",        
-                "msg": "there",        
-                "tid": "2013-05-05",        
-                "fromWho": "[email protected]"    
-}];
- for (var i = 0; i < json.length; i++) {
-     console.log(json[i].id);
-     console.log(json[i].msg);
-     console.log(json[i].tid);
-     console.log(json[i].fromWho);
- }
+         return true;
+      }
+
+           const remoteJSON = {"allowExternalMembers": "false", "whoCanJoin": "CAN_REQUEST_TO_JOIN"};
+           const localJSON = {"whoCanJoin": "CAN_REQUEST_TO_JOIN", "allowExternalMembers": "false"};
+
+              console.log(compareJSON(remoteJSON, localJSON)); // returns true
 
 
-b) FOR IN
+2.USE THE RAEST COUNTRIES API URL https://restcountries.com/v3.1/all  AND DISPLAY ALL COUNTRY FLAGS IN CONSOLE
 
-var obj = {
-    "id": "1",
-    "msg": "hi",
-    "tid": "2013-05-05",
-    "fromWho": "[email protected]"
-};
-for (var prop in obj) {
-    console.log(prop + ": " + obj[prop]);
+       var xhr= new XMLHttpRequest();
+         xhr.open ('GET','https://restcountries.com/v3.1/all')
+         xhr.responseType='json';
+         xhr.send();
+         xhr.onload=function(){
+             var responseObj=xhr.response;
+                  for(i=0;i<responseObj.length;i++){
+                  console.log("COUNTRY NAME: "+responseObj[i].name.common+"                     "+"FLAG: "+responseObj[i].flags.png);
+
+                }
+              }
+
+
+3.USE THE REST COUNTRIES AND DISPLAY ALL COUNTRIES NAME, REGION, SUB REGION AND POPULATION IN CONSOLE
+
+   let xhr = new XMLHttpRequest();
+xhr.open("GET", "https://restcountries.com/v3.1/all")
+xhr.send();
+xhr.onload = () => {
+    let data = JSON.parse(xhr.response)
+    data.forEach((country) => {
+        console.log(`Name: ${country.name.common}, Region: ${country.region}, Sub-region: ${country.subregion}, Population: ${country.population}`)
+    })
 }
-
-
-c) FOR OF
-
-
- var json = [ {        
-                "id": "1",        
-                "msg": "hi",        
-                "tid": "2013-05-05",         
-                "fromWho": "[email protected]"
-},   
-{          
-                "id": "2",        
-                "msg": "there",        
-                "tid": "2013-05-05",        
-                "fromWho": "[email protected]"    
-}];
-   for (let item of json) {
-      console.log(item.id);
-      console.log(item.msg); 
-      console.log(item.tid);
-      console.log(item.fromWho);
-}
-
-
-d) FOR EACH
-  
-
-  var json = [ {        
-                "id": "1",        
-                "msg": "hi",        
-                "tid": "2013-05-05",         
-                "fromWho": "[email protected]"
-},   
-{          
-                "id": "2",        
-                "msg": "there",        
-                "tid": "2013-05-05",        
-                "fromWho": "[email protected]"    
-}];
-json.forEach(function(item) {
-        console.log(item.id);
-        console.log(item.msg);
-        console.log(item.tid);
-        console.log(item.fromWho);
-});
